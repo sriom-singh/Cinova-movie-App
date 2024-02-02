@@ -1,7 +1,11 @@
+
 import { Link } from "react-router-dom"
-import logo from '../../../public/logo.png';
+import logo from '../../assets/logo.png';
 
 const SideNav = () => {
+
+
+
   return (
     <div className="w-1/6 h-full border-r-2 border-zinc-700 p-3 px-6" >
         <h1 className="text-2xl flex text-white font-medium tracking-tighter border-b-[1px] border-zinc-500 py-4 ">
