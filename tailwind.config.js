@@ -13,7 +13,11 @@ export default {
       fontFamily:{
         'poppins':['Poppins', 'sans-serif'],
         'wix':['Wix Madefor Display', 'sans-serif']
-      }
+      },
+      boxShadow: {
+        's': '0 0 20px -10px rgba(0, 0, 0, 0.2)',
+      },
+   
     },
   },
   plugins: [],

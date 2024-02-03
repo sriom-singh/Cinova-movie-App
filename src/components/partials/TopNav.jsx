@@ -12,7 +12,6 @@ const TopNav = () => {
   const getSearches = async()=>{
     try{
       const {data} = await axios.get(`search/multi?query=${query}`)
-      console.log(data.results)
       setSearches(data.results);
     }catch(error){
       console.log(error)
@@ -45,7 +44,7 @@ const TopNav = () => {
     }
         </div>
 
-    <div className="absolute w-[37.5%] max-h-96 left-20 top-3/4 overflow-auto">
+    <div className="absolute w-[37.5%] max-h-96 left-20 top-3/4 overflow-auto z-50">
 
             { search.map((m,i)=>(<Link
                 to=""
