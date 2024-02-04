@@ -22,7 +22,7 @@ const SideNav = () => {
         </nav>
         <nav className="flex flex-col gap-1 ">
             <h1 className="text-white  mt-4 pb-2 border-b-[1px] border-zinc-700 mb-2  ">New Feeds</h1>
-            <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className=" ri-fire-line "></i> Trending</Link>
+            <Link to='/trending' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className=" ri-fire-line "></i> Trending</Link>
             <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-bard-fill"></i> Popular</Link>
             <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-movie-2-line"></i> Movies</Link>
             <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-tv-line"></i> Tv Shows</Link>

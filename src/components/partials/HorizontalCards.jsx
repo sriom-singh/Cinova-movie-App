@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useEffect, useState } from "react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";

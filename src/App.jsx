@@ -1,5 +1,6 @@
 import {Routes,Route} from 'react-router-dom'
-import Home from './components/Home'
+import Home from './components/pages/Home'
+import Trending from './components/pages/Trending'
 
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
 
       <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/trending' element={<Trending/>}/>
       </Routes>
 
     </div>
