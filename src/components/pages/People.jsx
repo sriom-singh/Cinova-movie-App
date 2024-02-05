@@ -1,28 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import TopNav from "../partials/TopNav";
-import Dropdown from "../partials/Dropdown";
 import { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import Card from "../partials/Card";
 import ShimmerCard from "../ShimmerCard";
 
-const Trending = () => {
-  
-  const [page, setPage] = useState(1);
-  const navigate = useNavigate();
-  const [category, setcategory] = useState("all");
-  document.title="Cinova - Trending- ("+ category+")";
-  const [duration, setduration] = useState("day");
-  const [trending, setTrending] = useState([]);
+const People = () => {
+    
+    const [page, setPage] = useState(1);
+    const navigate = useNavigate();
+    const [category, setcategory] = useState("popular");
+    // This will change title dynamically.
+    document.title="Cinova - People- ("+ category+")";
+  const [people, setPeople] = useState([]);
 
-  const GetTrending = async () => {
+  const GetPeople = async () => {
     try {
-      // setTrending([])
+      // setPeople([])
       const { data } = await axios.get(
-        `trending/${category}/${duration}?page=${page}`
+        `person/${category}?page=${page}`
       );
-      setTrending(data.results);
-      // setTrending((prevState)=>[...prevState,...data.results])
+      console.log(data)
+      setPeople(data.results);
+      // setPeople((prevState)=>[...prevState,...data.results])
     } catch (error) {
       console.log(error);
     }
@@ -30,12 +30,12 @@ const Trending = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await GetTrending();
+      await GetPeople();
       window.scrollTo(0, 0);
     };
 
     fetchData();
-  }, [duration, category, page]);
+  }, [category, page]);
 
   return (
     <div className="w-screen h-screen px-2 py-4 " >
@@ -48,24 +48,16 @@ const Trending = () => {
           <i className="ri-arrow-left-s-line  text-4xl font-thin "></i>
         </Link>
         <h1 className="text-2xl font-wix text-zinc-200 font-medium mr-20">
-          Trending
+          People
         </h1>
         <TopNav />
       </div>
       <div className="w-full   max-h-fit gap-6 px-9 py mt-12 flex justify-end">
-        <Dropdown
-          title="Category"
-          options={["movie", "tv", "all"]}
-          func={(e) => setcategory(e.target.value)}
-        />
-        <Dropdown
-          title="Duration"
-          options={["week", "day"]}
-          func={(e) => setduration(e.target.value)}
-        />
+    
+  
       </div>
 
-      {trending.length > 0 ? <Card data={trending} /> : <ShimmerCard />}
+      {people.length > 0 ? <Card data={people} /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1
@@ -91,4 +83,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default People;

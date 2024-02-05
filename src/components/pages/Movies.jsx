@@ -6,23 +6,24 @@ import axios from "../../utils/axios";
 import Card from "../partials/Card";
 import ShimmerCard from "../ShimmerCard";
 
-const Trending = () => {
-  
-  const [page, setPage] = useState(1);
-  const navigate = useNavigate();
-  const [category, setcategory] = useState("all");
-  document.title="Cinova - Trending- ("+ category+")";
-  const [duration, setduration] = useState("day");
-  const [trending, setTrending] = useState([]);
+const Movies = () => {
+    
+    const [page, setPage] = useState(1);
+    const navigate = useNavigate();
+    const [category, setcategory] = useState("now_playing");
+    // This will change title dynamically.
+    document.title="Cinova - Movies- ("+ category+")";
+  const [movie, setMovies] = useState([]);
 
-  const GetTrending = async () => {
+  const GetMovies = async () => {
     try {
-      // setTrending([])
+      // setMovies([])
       const { data } = await axios.get(
-        `trending/${category}/${duration}?page=${page}`
+        `movie/${category}?page=${page}`
       );
-      setTrending(data.results);
-      // setTrending((prevState)=>[...prevState,...data.results])
+      console.log(data)
+      setMovies(data.results);
+      // setMovies((prevState)=>[...prevState,...data.results])
     } catch (error) {
       console.log(error);
     }
@@ -30,12 +31,12 @@ const Trending = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await GetTrending();
+      await GetMovies();
       window.scrollTo(0, 0);
     };
 
     fetchData();
-  }, [duration, category, page]);
+  }, [category, page]);
 
   return (
     <div className="w-screen h-screen px-2 py-4 " >
@@ -48,24 +49,20 @@ const Trending = () => {
           <i className="ri-arrow-left-s-line  text-4xl font-thin "></i>
         </Link>
         <h1 className="text-2xl font-wix text-zinc-200 font-medium mr-20">
-          Trending
+          Movies
         </h1>
         <TopNav />
       </div>
       <div className="w-full   max-h-fit gap-6 px-9 py mt-12 flex justify-end">
         <Dropdown
           title="Category"
-          options={["movie", "tv", "all"]}
+          options={["now_playing", "popular","top_rated","upcoming"]}
           func={(e) => setcategory(e.target.value)}
         />
-        <Dropdown
-          title="Duration"
-          options={["week", "day"]}
-          func={(e) => setduration(e.target.value)}
-        />
+  
       </div>
 
-      {trending.length > 0 ? <Card data={trending} /> : <ShimmerCard />}
+      {movie.length > 0 ? <Card data={movie} /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1
@@ -91,4 +88,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default Movies;

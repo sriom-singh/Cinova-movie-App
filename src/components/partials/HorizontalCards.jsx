@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IoLanguageOutline } from "react-icons/io5";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,7 +11,7 @@ import { Pagination, Navigation } from "swiper/modules";
 const HorizontalCards = ({ data }) => {
 
   return (
-    <div className="w-full h-96  overflow-x-hidden overflow-hidden p-4">
+    <div className="w-full h-96 overflow-x-hidden overflow-hidden p-4">
       <hr className="opacity-15 my-2"></hr>
       <Swiper
         slidesPerView={1}
@@ -40,7 +42,7 @@ const HorizontalCards = ({ data }) => {
         {data.map((d, i) => (
           <SwiperSlide
             key={i}
-            className="shadow-s  relative shadow-zinc-800 bg-center bg-cover rounded-md flex justify-start  items-end"
+            className="shadow-s   relative shadow-zinc-800 bg-center bg-cover rounded-md flex justify-start  items-end"
             // style={{
             //   background: `url(https://image.tmdb.org/t/p/original${d.poster_path})`,
             //   ...backgroundStyle,
@@ -61,7 +63,7 @@ const HorizontalCards = ({ data }) => {
               <p className=" text-xs truncate mt-1 flex items-center text-zinc-400">
                 <i className="ri-star-s-line  mr-1 text-yellow-400 text-base"></i>{" "}
                 {d.vote_average || "N/A"}
-                <i className="ri-global-line mr-1 ml-4 text-blue-400 text-base"></i>{" "}
+                <p className=" mr-1 ml-4 text-blue-400 text-base"><IoLanguageOutline/></p>{" "}
                 {d.original_language || "N/A"}
               </p>
             </div>

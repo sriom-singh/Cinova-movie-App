@@ -6,23 +6,24 @@ import axios from "../../utils/axios";
 import Card from "../partials/Card";
 import ShimmerCard from "../ShimmerCard";
 
-const Trending = () => {
-  
-  const [page, setPage] = useState(1);
-  const navigate = useNavigate();
-  const [category, setcategory] = useState("all");
-  document.title="Cinova - Trending- ("+ category+")";
-  const [duration, setduration] = useState("day");
-  const [trending, setTrending] = useState([]);
+const TVshows = () => {
+    
+    const [page, setPage] = useState(1);
+    const navigate = useNavigate();
+    const [category, setcategory] = useState("airing_today");
+    // This will change title dynamically.
+    document.title="Cinova - TVshows- ("+ category+")";
+  const [tv, setTVshows] = useState([]);
 
-  const GetTrending = async () => {
+  const GetTVshows = async () => {
     try {
-      // setTrending([])
+      // setTVshows([])
       const { data } = await axios.get(
-        `trending/${category}/${duration}?page=${page}`
+        `tv/${category}?page=${page}`
       );
-      setTrending(data.results);
-      // setTrending((prevState)=>[...prevState,...data.results])
+      console.log(data)
+      setTVshows(data.results);
+      // setTVshows((prevState)=>[...prevState,...data.results])
     } catch (error) {
       console.log(error);
     }
@@ -30,12 +31,12 @@ const Trending = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await GetTrending();
+      await GetTVshows();
       window.scrollTo(0, 0);
     };
 
     fetchData();
-  }, [duration, category, page]);
+  }, [category, page]);
 
   return (
     <div className="w-screen h-screen px-2 py-4 " >
@@ -48,24 +49,20 @@ const Trending = () => {
           <i className="ri-arrow-left-s-line  text-4xl font-thin "></i>
         </Link>
         <h1 className="text-2xl font-wix text-zinc-200 font-medium mr-20">
-          Trending
+          TVshows
         </h1>
         <TopNav />
       </div>
       <div className="w-full   max-h-fit gap-6 px-9 py mt-12 flex justify-end">
         <Dropdown
           title="Category"
-          options={["movie", "tv", "all"]}
+          options={["airing_today", "on_the_air","popular","top_rated"]}
           func={(e) => setcategory(e.target.value)}
         />
-        <Dropdown
-          title="Duration"
-          options={["week", "day"]}
-          func={(e) => setduration(e.target.value)}
-        />
+  
       </div>
 
-      {trending.length > 0 ? <Card data={trending} /> : <ShimmerCard />}
+      {tv.length > 0 ? <Card data={tv} /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1
@@ -91,4 +88,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default TVshows;

@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Header = ({ data }) => {
-  console.log(data)
+  
   return (
     <div
       className="w-full h-[400px]  text-white flex flex-col justify-end items-start "

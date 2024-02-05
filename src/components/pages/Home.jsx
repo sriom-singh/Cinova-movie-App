@@ -18,7 +18,6 @@ const Home = () => {
     const getList = async() => {
       try{
         const {data} = await axios.get('trending/all/day');
-        console.log(data);
        
         setWallpaper(data.results);
        } catch(error){
@@ -29,7 +28,6 @@ const Home = () => {
        const getTrending = async() => {
         try{
           const {data} = await axios.get(`trending/${category}/day`);
-          console.log(data);
          
           setTrending(data.results);
          } catch(error){
