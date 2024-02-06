@@ -17,7 +17,7 @@ const TVshows = () => {
 
   const GetTVshows = async () => {
     try {
-      // setTVshows([])
+      setTVshows([])
       const { data } = await axios.get(
         `tv/${category}?page=${page}`
       );
@@ -62,7 +62,7 @@ const TVshows = () => {
   
       </div>
 
-      {tv.length > 0 ? <Card data={tv} /> : <ShimmerCard />}
+      {tv.length > 0 ? <Card data={tv} title='tv' /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1

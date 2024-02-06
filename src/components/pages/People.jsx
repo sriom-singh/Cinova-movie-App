@@ -9,14 +9,14 @@ const People = () => {
     
     const [page, setPage] = useState(1);
     const navigate = useNavigate();
-    const [category, setcategory] = useState("popular");
+    const [category] = useState("popular");
     // This will change title dynamically.
     document.title="Cinova - People- ("+ category+")";
   const [people, setPeople] = useState([]);
 
   const GetPeople = async () => {
     try {
-      // setPeople([])
+      setPeople([])
       const { data } = await axios.get(
         `person/${category}?page=${page}`
       );
@@ -57,7 +57,7 @@ const People = () => {
   
       </div>
 
-      {people.length > 0 ? <Card data={people} /> : <ShimmerCard />}
+      {people.length > 0 ? <Card data={people} title='person' /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1

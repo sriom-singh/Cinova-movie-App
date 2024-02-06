@@ -44,9 +44,9 @@ const Home = () => {
 
 
   return (
-    <>
+    <div className="flex w-full overflow-hidden">
     <SideNav />
-    <div className="w-5/6 h-full ">
+    <div className="w-5/6 h-full overflow-y-scroll ">
       <TopNav />
 
     { wallpaper&&trending?
@@ -60,7 +60,7 @@ const Home = () => {
 
     <HorizontalCards data={trending} /></>:<Shimmer />}
     </div>
-    </>
+    </div>
   )
 }
 

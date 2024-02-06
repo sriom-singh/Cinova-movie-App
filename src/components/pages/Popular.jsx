@@ -17,7 +17,7 @@ const Popular = () => {
 
   const GetPopular = async () => {
     try {
-      // setPopular([])
+      setPopular([])
       const { data } = await axios.get(
         `${category}/popular?page=${page}`
       );

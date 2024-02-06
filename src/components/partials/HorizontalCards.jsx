@@ -60,12 +60,12 @@ const HorizontalCards = ({ data }) => {
               <p className="text-xs line-clamp-3 text-zinc-400">
                 {d.overview || "This the best film ever made."}
               </p>
-              <p className=" text-xs truncate mt-1 flex items-center text-zinc-400">
+              <div className=" text-xs truncate mt-1 flex items-center text-zinc-400">
                 <i className="ri-star-s-line  mr-1 text-yellow-400 text-base"></i>{" "}
                 {d.vote_average || "N/A"}
                 <p className=" mr-1 ml-4 text-blue-400 text-base"><IoLanguageOutline/></p>{" "}
                 {d.original_language || "N/A"}
-              </p>
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -7,7 +7,7 @@ const SideNav = () => {
 
 
   return (
-    <div className="w-1/6 h-full border-r-2 border-zinc-700 p-3 px-6" >
+    <div className="w-1/6 h-full border-r-2 overflow-hidden border-zinc-700 p-3 px-6" >
         <h1 className="text-2xl flex text-white font-medium tracking-tighter border-b-[1px] border-zinc-500 py-4 ">
             {/* <i className=" text-primary ri-film-fill mr-2" /> */}
             <img className="mr-2 w-8" src={logo}></img>

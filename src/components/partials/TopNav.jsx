@@ -47,7 +47,7 @@ const TopNav = () => {
     <div className="absolute w-[37.5%] max-h-96 left-20 top-3/4 overflow-auto z-50">
 
             { search.map((m,i)=>(<Link
-                to=""
+                to={`/${m.media_type}/${m.id}`}
                 key={i}
                 className="px-6 py-3 border-b-2 border-zinc-500 inline-flex text-zinc-200 items-center bg-zinc-900 w-full "
               >

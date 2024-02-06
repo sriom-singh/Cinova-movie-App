@@ -17,7 +17,7 @@ const Movies = () => {
 
   const GetMovies = async () => {
     try {
-      // setMovies([])
+      setMovies([])
       const { data } = await axios.get(
         `movie/${category}?page=${page}`
       );
@@ -62,7 +62,7 @@ const Movies = () => {
   
       </div>
 
-      {movie.length > 0 ? <Card data={movie} /> : <ShimmerCard />}
+      {movie.length > 0 ? <Card data={movie} title='movie'  /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1

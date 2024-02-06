@@ -17,7 +17,7 @@ const Trending = () => {
 
   const GetTrending = async () => {
     try {
-      // setTrending([])
+      setTrending([])
       const { data } = await axios.get(
         `trending/${category}/${duration}?page=${page}`
       );

@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
-import ScrollToTop from "react-scroll-to-top";
 import { IoLanguageOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-const Card = ({ data }) => {
+const Card = ({ data,title }) => {
   return (
     <div className="w-full min-h-full flex flex-wrap gap-5 justify-center mt-4  p-4">
-      <ScrollToTop smooth color="#6f00ff" />
 
       {data.map((d, i) => (
-        <div
+        <Link to={`/${title}/${d.id}`}
           key={i}
           className="shadow-s mb-5 w-56  flex-col shadow-zinc-800 bg-center bg-cover rounded-md flex justify-start  items-end"
           // style={{
@@ -32,7 +31,7 @@ const Card = ({ data }) => {
                 d.known_for_department ||
                 "This the best film ever made."}
             </p>
-            <p className=" text-xs truncate mt-1 flex items-center text-center text-zinc-400">
+            <div className=" text-xs truncate mt-1 flex items-center text-center text-zinc-400">
               <i className="ri-star-s-line  text-yellow-400 text-base"></i>{" "}
               {d.vote_average || d.popularity || "N/A"}
               <p className=" ml-3 text-blue-400 text-base">
@@ -41,9 +40,9 @@ const Card = ({ data }) => {
               {d.original_language || "N/A"}
               <i className="ri-calendar-line mr-1 ml-4 text-purple-400 text-base"></i>
               {d.release_date || "N/A"}
-            </p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
