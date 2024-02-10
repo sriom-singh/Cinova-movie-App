@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link,Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,10 +6,10 @@ import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { LuExternalLink } from "react-icons/lu";
 import Shimmer from "./Shimmer";
 import { FaWikipediaW } from "react-icons/fa";
-import { IoLanguageOutline } from "react-icons/io5";
 import { FaImdb } from "react-icons/fa6";
 import Marquee from "react-fast-marquee";
 import { IoPlayOutline } from "react-icons/io5";
+import HorizontalCards from "./partials/HorizontalCards";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -18,17 +18,16 @@ const MovieDetail = () => {
 
   const dispatch = useDispatch();
 
-  const { pathName } = useLocation();
-
+  const { pathname } = useLocation();
+  console.log(info);
   useEffect(() => {
     dispatch(asyncloadmovie(id));
     // await GetMovies();
     // window.scrollTo(0, 0);
-    console.log(info);
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [id]);
 
   return info ? (
     <div
@@ -39,7 +38,7 @@ const MovieDetail = () => {
         backgroundRepeat: "no-repeat",
         filter: blur("28px"),
       }}
-      className="w-screen h-screen px-4 "
+      className="w-screen  px-4 "
     >
       <div className="w-full backdrop-blur-[2px] ">
         <nav className="pt-4 flex justify-between">
@@ -92,32 +91,32 @@ const MovieDetail = () => {
                 {info.detail.title}
               </h1>
 
-              <p className="text-xs text-center flex gap-2  text-white">
+              <h1 className="text-xs text-center flex gap-2  text-white">
                 {info.detail.genres.map((categ) => (
                   <p className="bg-secondary p-2 rounded-full px-4" key={categ}>
                     {categ.name}
                   </p>
                 )) || "NA."}
-              </p>
+              </h1>
               <div className=" text-xs truncate mt-1 flex gap-4 items-center text-center text-zinc-400">
-                <p className=" flex items-center gap-1 text-base">
+                <h1 className=" flex items-center gap-1 text-base">
                   <i className="ri-star-s-line text-yellow-400" />
                   <p className="text-sm">
                     {info.detail.vote_average.toFixed(1) || "N/A"}
                   </p>
-                </p>
+                </h1>
 
-                <p className=" mr-1  flex items-center gap-1  text-base">
+                <h1 className=" mr-1  flex items-center gap-1  text-base">
                   <i className="ri-calendar-line text-purple-600" />
                   <p className="text-sm">{info.detail.release_date || "N/A"}</p>
-                </p>
+                </h1>
               </div>
 
               <p className="text-xs w-2/4 py-2 line-clamp-3 text-zinc-300">
                 {info.detail.overview || "This the best film ever made."}
               </p>
               <Link
-                to={`${pathName}/trailer`}
+                to={`${pathname}/trailer`}
                 className="border-[1px] flex items-center justify-center hover:text-purple-500 gap-1 text-sm w-28 py-2 text-white border-primary text-center  rounded-md "
               >
                 <IoPlayOutline size={20} /> Play Trailer
@@ -126,8 +125,10 @@ const MovieDetail = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-gray-500 font-wix text-2xl text-center -mb-4">
-        Languages Available
+
+        
+      <h1 className="text-gray-400 font-wix text-lg text-center -mb-4">
+        Languages Available:
       </h1>
       <Marquee className="flex gap-2 text-white p-4 px-6" autoFill={true}>
         {info.translations.map((m, i) => (
@@ -136,6 +137,23 @@ const MovieDetail = () => {
           </p>
         ))}
       </Marquee>
+        <Outlet/>
+
+      {/* Recommendations */}
+
+    {info.similar.results.length && <div className="px-8 ">
+        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+          Similar
+        </h1>
+        {info.similar && <HorizontalCards data={info.similar.results} />}
+      </div>}
+
+      {info.recommendation.length && <div className="px-8 ">
+        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+          Recommended
+        </h1>
+        {info.similar && <HorizontalCards data={info.recommendation} />}
+      </div>}
     </div>
   ) : (
     <Shimmer />

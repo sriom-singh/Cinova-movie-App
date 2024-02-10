@@ -7,11 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
+import image from '../../assets/no-image.jpg'
 
 const HorizontalCards = ({ data }) => {
 
   return (
-    <div className="w-full h-96 overflow-x-hidden overflow-hidden p-4">
+    <div className="w-full h-[440px] overflow-x-hidden overflow-hidden p-4">
       <hr className="opacity-15 my-2"></hr>
       <Swiper
         slidesPerView={1}
@@ -37,12 +38,12 @@ const HorizontalCards = ({ data }) => {
           },
         }}
         modules={[Pagination, Navigation]}
-        className="h-[90%] p-3"
+        className="h-[90%] p-3  "
       >
         {data.map((d, i) => (
           <SwiperSlide
             key={i}
-            className="shadow-s   relative shadow-zinc-800 bg-center bg-cover rounded-md flex justify-start  items-end"
+            className="shadow-s  relative shadow-zinc-800 bg-center bg-cover rounded-md flex justify-start  items-end"
             // style={{
             //   background: `url(https://image.tmdb.org/t/p/original${d.poster_path})`,
             //   ...backgroundStyle,
@@ -51,15 +52,22 @@ const HorizontalCards = ({ data }) => {
           >
             <img
               className="object-cover h-full absolute w-full "
-              src={`https://image.tmdb.org/t/p/original${d.poster_path}`}
+              src={d.poster_path ||d.backdrop_path?`https://image.tmdb.org/t/p/original${d.poster_path ||d.backdrop_path}`:image}
             ></img>
-            <div className="z-10 absolute flex flex-col justify-end duration-500 h-full cursor-pointer rounded-md hover:opacity-100  m-auto opacity-0 text-white text-lg font-poppins font-thin  bg-[rgb(0,0,0,0.9)] p-3 w-full">
+            <div className="z-10 absolute flex flex-col justify-end duration-500  cursor-pointer rounded-md opacity-100  m-auto  text-white text-lg font-poppins font-thin  bg-[rgb(0,0,0,0.9)] p-3 w-full">
               <h1 className="truncate">
                 {d?.name || d.title || d?.original_name || d.original_title}
               </h1>
+          {
+            d.episode_count && <h1 className="text-xs font-wix font-light">Episodes - {d.episode_count}</h1>
+          }
               <p className="text-xs line-clamp-3 text-zinc-400">
-                {d.overview || "This the best film ever made."}
+                {d.overview}
               </p>
+
+
+
+
               <div className=" text-xs truncate mt-1 flex items-center text-zinc-400">
                 <i className="ri-star-s-line  mr-1 text-yellow-400 text-base"></i>{" "}
                 {d.vote_average || "N/A"}
