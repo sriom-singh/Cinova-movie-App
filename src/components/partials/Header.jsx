@@ -64,7 +64,7 @@ const Header = ({ data }) => {
                <i className="ri-movie-2-line text-primary pr-2 text-xl text-center ml-8"></i>
                {d.media_type}
              </p>
-             <Link className="px-4  py-2 mt-4 w-32 bg-primary hover:bg-primary/50 duration-100 ">Watch Trailer</Link> 
+             <Link to={`/${d.media_type}/${d.id}/trailer`} className="px-4  py-2 mt-4 w-32 bg-primary hover:bg-primary/50 duration-100 ">Watch Trailer</Link> 
              </SwiperSlide>
         ))}
 

@@ -1,4 +1,4 @@
-import { useParams, Link,Outlet } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,7 @@ const TVDetail = () => {
     return () => {
       dispatch(removetv());
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   return info ? (
     <div
@@ -88,7 +88,7 @@ const TVDetail = () => {
             />
             <div className="p-2 flex flex-col gap-4 pt-4">
               <h1 className="font-wix uppercase tracking-wide font-bold text-4xl  text-white">
-                {info.detail.title||info.detail.name}
+                {info.detail.title || info.detail.name}
               </h1>
 
               <h1 className="text-xs text-center flex gap-2  text-white">
@@ -108,7 +108,11 @@ const TVDetail = () => {
 
                 <h1 className=" mr-1  flex items-center gap-1  text-base">
                   <i className="ri-calendar-line text-purple-600" />
-                  <p className="text-sm">{info.detail.release_date ||info.detail.first_air_date|| "N/A"}</p>
+                  <p className="text-sm">
+                    {info.detail.release_date ||
+                      info.detail.first_air_date ||
+                      "N/A"}
+                  </p>
                 </h1>
               </div>
 
@@ -126,7 +130,6 @@ const TVDetail = () => {
         </div>
       </div>
 
-        
       <h1 className="text-gray-400 font-wix text-lg text-center -mb-4">
         Languages Available:
       </h1>
@@ -137,30 +140,34 @@ const TVDetail = () => {
           </p>
         ))}
       </Marquee>
-        <Outlet/>
+      <Outlet />
 
-      {/* Recommendations */}
-      {info.detail.seasons.length && <div className="px-8 ">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
-        Seasons
-        </h1>
-        <HorizontalCards data={info.detail.seasons} />
-      </div>}
+      {/* Seasons */}
+      {info.detail.seasons.length && (
+        <div className="px-8 mt-10">
+          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+            Seasons
+          </h1>
+          <HorizontalCards data={info.detail.seasons} />
+        </div>
+      )}
 
-    {info.similar.results.length && <div className="px-8 ">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
-          Similar
-        </h1>
-        <HorizontalCards data={info.similar.results} />
-      </div>}
-
-
-      {info.recommendation.length && <div className="px-8 ">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
-          Recommended
-        </h1>
-       <HorizontalCards data={info.recommendation} />
-      </div>}
+      {info.recommendation.length && (
+        <div className="px-8 ">
+          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+            Recommended
+          </h1>
+          <HorizontalCards data={info.recommendation} />
+        </div>
+      )}
+      {info.similar.results.length && (
+        <div className="px-8 ">
+          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+            Similar
+          </h1>
+          <HorizontalCards data={info.similar.results} />
+        </div>
+      )}
     </div>
   ) : (
     <Shimmer />

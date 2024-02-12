@@ -140,20 +140,20 @@ const MovieDetail = () => {
         <Outlet/>
 
       {/* Recommendations */}
-
-    {info.similar.results.length && <div className="px-8 ">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
-          Similar
-        </h1>
-        {info.similar && <HorizontalCards data={info.similar.results} />}
-      </div>}
-
       {info.recommendation.length && <div className="px-8 ">
         <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
           Recommended
         </h1>
         {info.similar && <HorizontalCards data={info.recommendation} />}
       </div>}
+
+    {info.similar.results.length && <div className="px-8 mt-10">
+        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+          Similar
+        </h1>
+        {info.similar && <HorizontalCards data={info.similar.results} />}
+      </div>}
+
     </div>
   ) : (
     <Shimmer />

@@ -4,18 +4,18 @@ const initialState ={
     info:null,
 }
 
-export const peopleSlice = createSlice({
+export const personSlice = createSlice({
     name:"tv",
     initialState,
     reducers:{
-        loadpeople:(state,action)=>{
+        loadperson:(state,action)=>{
             state.info=action.payload;
         },
-        removepeople:(state)=>{
+        removeperson:(state)=>{
             state.info=null;
         }
     }
 })
 
-export const {loadpeople,removepeople} = peopleSlice.actions;
-export default peopleSlice.reducer;
+export const {loadperson,removeperson} = personSlice.actions;
+export default personSlice.reducer;

@@ -58,7 +58,7 @@ const Home = () => {
     <Dropdown title="Filter" options={["tv","movie","all"]} func={(e)=>setCatgory(e.target.value)} />
     </div>
 
-    <HorizontalCards data={trending} /></>:<Shimmer />}
+    <HorizontalCards data={trending}/></>:<Shimmer />}
     </div>
     </div>
   )

@@ -6,7 +6,8 @@ const Error = () => {
       <h1 className="text-9xl">☹</h1>
       <h1 className="text-6xl">404</h1>
       <p className="text-3xl">Sorry, Request Not Found!</p>
-      <button onClick={()=>navigate(-1)} className='underline bg-black w-40 h-10 rounded-xl hover:text-primary'>Go Back</button>
+      <p className="text-xs font-thin font-wix">Note : These page may be not available for right now. But we are working on it. Soon it will be available.</p>
+      <button onClick={()=>navigate(-1)} className='underline bg-black w-40 h-10 rounded-lg text-sm hover:text-primary'>Go Back</button>
     </div>
   );
 };

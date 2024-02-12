@@ -19,7 +19,7 @@ const navigate = useNavigate();
             <i className="ri-add-fill rotate-45  text-4xl  font-thin bg-zinc-600  px-0.5 rounded-full" > </i>
           </Link>
          { ytVideo ?   <>
-        <ReactPlayer url={`https://www.youtube.com/watch?v=${ytVideo.key}`} height={'80%'} width={"70%"}  />
+        <ReactPlayer controls url={`https://www.youtube.com/watch?v=${ytVideo.key}`} height={'80%'} width={"70%"}  />
             </>:<Error/>}
         
     </div>
