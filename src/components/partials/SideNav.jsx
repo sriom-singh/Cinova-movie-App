@@ -7,26 +7,26 @@ const SideNav = () => {
 
 
   return (
-    <div className="w-1/6 h-full border-r-2 overflow-hidden border-zinc-700 p-3 px-6" >
+    <div className="w-1/6 h-full p-3 px-6 border-r-2 md: ovmderflow-hidden  border-zinc-700" >
         <h1 className="text-2xl flex text-white font-medium tracking-tighter border-b-[1px] border-zinc-500 py-4 ">
-            {/* <i className=" text-primary ri-film-fill mr-2" /> */}
-            <img className="mr-2 w-8" src={logo}></img>
+            {/* <i className="mr-2 text-primary ri-film-fill" /> */}
+            <img className="w-8 mr-2" src={logo}></img>
             <span className="font-poppins">Cinova</span>
         </h1>
         <nav className="flex flex-col gap-1 font-wix ">
             <h1 className="text-white text- mt-8 pb-2 border-b-[1px] border-zinc-700 mb-2 ">Menu</h1>
-            <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200 flex items-center align-middle"><i className="ri-home-5-line  mr-1"></i> Home</Link>
-            <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200 flex items-center text-middle"><i className="ri-information-line  mr-1"></i> About</Link>
-            <Link className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200 flex items-center"><i className="ri-phone-line  mr-1" ></i> Contact</Link>
+            <Link className="flex items-center p-2 text-sm align-middle duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="mr-1 ri-home-5-line"></i> Home</Link>
+            <Link className="flex items-center p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary text-middle"><i className="mr-1 ri-information-line"></i> About</Link>
+            <Link className="flex items-center p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="mr-1 ri-phone-line" ></i> Contact</Link>
   
         </nav>
         <nav className="flex flex-col gap-1 ">
             <h1 className="text-white  mt-4 pb-2 border-b-[1px] border-zinc-700 mb-2  ">New Feeds</h1>
-            <Link to='/trending' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className=" ri-fire-line "></i> Trending</Link>
-            <Link to='/popular' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-bard-fill"></i> Popular</Link>
-            <Link to='/movies' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-movie-2-line"></i> Movies</Link>
-            <Link to='/tv' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-tv-line"></i> Tv Shows</Link>
-            <Link to='/people' className="text-zinc-300 hover:bg-primary text-sm p-2 rounded-sm duration-200"><i className="ri-team-line"></i> People</Link>
+            <Link to='/trending' className="p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className=" ri-fire-line"></i> Trending</Link>
+            <Link to='/popular' className="p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="ri-bard-fill"></i> Popular</Link>
+            <Link to='/movies' className="p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="ri-movie-2-line"></i> Movies</Link>
+            <Link to='/tv' className="p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="ri-tv-line"></i> Tv Shows</Link>
+            <Link to='/people' className="p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary"><i className="ri-team-line"></i> People</Link>
 
 
         </nav>

@@ -44,16 +44,16 @@ const Home = () => {
 
 
   return (
-    <div className="flex w-full overflow-hidden">
+    <div className="flex w-full  overflow-hidden">
     <SideNav />
-    <div className="w-5/6 h-full overflow-y-scroll ">
+    <div className="w-5/6 overflow-y-scroll md:w-full h-full ">
       <TopNav />
 
     { wallpaper&&trending?
     <>
       <Header data={wallpaper} />
 
-    <div className="text-3xl flex gap-16 font-medium font-poppins mt-6 px-6 pr-8 -mb-3 text-zinc-300 ">
+    <div className="flex gap-16 px-6 pr-8 mt-6 -mb-3 text-3xl font-medium font-poppins text-zinc-300 ">
       <h1>Trending</h1> 
     <Dropdown title="Filter" options={["tv","movie","all"]} func={(e)=>setCatgory(e.target.value)} />
     </div>

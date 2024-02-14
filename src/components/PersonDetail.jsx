@@ -118,24 +118,13 @@ const PersonDetail = () => {
                 </p>
               </h1>
 
-       
-{/* 
-              <div className=" text-xs truncate mt-1 flex gap-4 items-center text-center text-zinc-400">
-                <h1 className=" flex items-center gap-1 text-base">
-                  <i className="ri-heart-line text-yellow-400" />
-                  <p className="text-sm">
-                    {info.detail.popularity.toFixed(2) || "N/A"}
-                  </p>
-                </h1>
-              </div> */}
-
-              <p className="text-sm leading-6 w-full max-h-min overflow-hidden line-clamp-5 font-normal text-zinc-200">
-              <h1 className=" mb-1 text-zinc-400 text-xl flex items-center gap-1 font-normal">
-                Biography
-              </h1>
+              <h1 className="text-sm leading-6 w-full max-h-min overflow-hidden line-clamp-5 font-normal text-zinc-200">
+                <p className=" mb-1 text-zinc-400 text-xl flex items-center gap-1 font-normal">
+                  Biography
+                </p>
 
                 {info.detail.biography || "This the best film ever made."}
-              </p>
+              </h1>
               <div className="text-purple-400 justify-start flex gap-8  items-center">
                 <a
                   target="_blank"
@@ -179,8 +168,6 @@ const PersonDetail = () => {
               </Link> */}
             </div>
           </div>
-
-      
         </div>
       </div>
     </div>
