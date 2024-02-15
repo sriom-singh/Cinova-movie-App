@@ -44,9 +44,9 @@ const Home = () => {
 
 
   return (
-    <div className="flex w-full  overflow-hidden">
+    <div className="flex w-full overflow-hidden">
     <SideNav />
-    <div className="w-5/6 overflow-y-scroll md:w-full h-full ">
+    <div className="w-5/6 overflow-y-scroll right-screen">
       <TopNav />
 
     { wallpaper&&trending?

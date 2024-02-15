@@ -1,13 +1,18 @@
 
 import { Link } from "react-router-dom"
 import logo from '../../assets/logo.png';
+import { RiMenu3Line } from "react-icons/ri";
+import { useState } from "react";
+
 
 const SideNav = () => {
-
-
+const [isVisible, setisVisible] = useState(true)
 
   return (
-    <div className="w-1/6 h-full p-3 px-6 border-r-2 md: ovmderflow-hidden  border-zinc-700" >
+    <>
+    <p className="absolute lg:hidden xl:hidden 2xl:hidden top-4 text-teal-50 left-4 z-50 " onClick={()=>setisVisible(!isVisible)} > <RiMenu3Line size={30} /></p>
+
+    { isVisible && <div className=" side-nav w-1/6 h-full p-3 px-6 border-r-2  overflow-hidden  bg-secondary border-zinc-700" >
         <h1 className="text-2xl flex text-white font-medium tracking-tighter border-b-[1px] border-zinc-500 py-4 ">
             {/* <i className="mr-2 text-primary ri-film-fill" /> */}
             <img className="w-8 mr-2" src={logo}></img>
@@ -30,7 +35,8 @@ const SideNav = () => {
 
 
         </nav>
-    </div>
+    </div>}
+    </>
   )
 }
 
