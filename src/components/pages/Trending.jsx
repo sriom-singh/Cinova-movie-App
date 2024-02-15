@@ -33,7 +33,6 @@ const Trending = () => {
       await GetTrending();
       window.scrollTo(0, 0);
     };
-
     fetchData();
   }, [duration, category, page]);
 
@@ -66,7 +65,6 @@ const Trending = () => {
       </div>
 
       {trending.length > 0 ? <Card data={trending} /> : <ShimmerCard />}
-
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1
           onClick={() => setPage(1)}

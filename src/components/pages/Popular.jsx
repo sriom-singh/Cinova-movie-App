@@ -62,7 +62,7 @@ const Popular = () => {
   
       </div>
 
-      {popular.length > 0 ? <Card data={popular} /> : <ShimmerCard />}
+      {popular.length > 0 ? <Card data={popular} title={category} /> : <ShimmerCard />}
 
       <div className="w-full h-min flex p-4 justify-center gap-4">
         <h1
