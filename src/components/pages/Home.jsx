@@ -5,7 +5,7 @@ import Header from "../partials/Header";
 import axios from "../../utils/axios"
 import HorizontalCards from "../partials/HorizontalCards";
 import Dropdown from "../partials/Dropdown";
-import Shimmer from "../Shimmer";
+import Shimmer from "../shimmer/Shimmer";
 
 
 const Home = () => {

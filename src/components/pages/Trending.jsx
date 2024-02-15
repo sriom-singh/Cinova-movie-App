@@ -4,7 +4,7 @@ import Dropdown from "../partials/Dropdown";
 import { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import Card from "../partials/Card";
-import ShimmerCard from "../ShimmerCard";
+import ShimmerCard from "../shimmer/ShimmerCard";
 
 const Trending = () => {
   

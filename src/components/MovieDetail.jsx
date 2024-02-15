@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { LuExternalLink } from "react-icons/lu";
-import Shimmer from "./Shimmer";
+import DetailPage from "./shimmer/DetailPage";
 import { FaWikipediaW } from "react-icons/fa";
 import { FaImdb } from "react-icons/fa6";
 import Marquee from "react-fast-marquee";
@@ -156,7 +156,7 @@ const MovieDetail = () => {
 
     </div>
   ) : (
-    <Shimmer />
+    <DetailPage />
   );
 };
 
