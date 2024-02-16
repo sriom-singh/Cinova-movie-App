@@ -4,24 +4,24 @@ import axios from "../../utils/axios";
 import image from "../../assets/no-image.jpg";
 
 const TopNav = () => {
-  const [query, setQuery] = useState("");
-  const [search, setSearches] = useState([]);
+  // const [query, setQuery] = useState("");
+  // const [search, setSearches] = useState([]);
 
-  useEffect(() => {
-    const getSearches = async () => {
-      try {
-        const { data } = await axios.get(`search/multi?query=${query}`);
-        setSearches(data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getSearches();
-  }, [query]);
+  // useEffect(() => {
+  //   const getSearches = async () => {
+  //     try {
+  //       const { data } = await axios.get(`search/multi?query=${query}`);
+  //       setSearches(data.results);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getSearches();
+  // }, [query]);
 
   return (
-    <div className="w-full  h-16 relative flex  first-letter: items-center justify-center">
-      <div className="flex-1 w-1/2 h-full flex justify-center ml-3 items-center">
+    <div className="w-full  h-16 absolute right-0 z-[1000] flex  first-letter: items-center justify-center">
+      {/* <div className="flex-1 w-1/2 h-full flex justify-center ml-3 items-center">
         <input
           onChange={(e) => setQuery(e.target.value)}
           type="text"
@@ -71,8 +71,14 @@ const TopNav = () => {
             </span>
           </Link>
         ))}
-      </div>
-      <div className="flex-1  flex justify-end  h-full  items-center">
+      </div> */}
+      <div className="flex-1 gap-2 flex justify-end  h-full  items-center">
+        <Link to={"/search"}>
+          <i
+            className="ri-search-line text-2xl px-4 -ml-1 py-1.5 text-zinc-200"
+            aria-label="Search Icon"
+          ></i>
+        </Link>
         <i className="ri-user-line text-2xl text-white mr-6 font-thin"></i>
         <i className="ri-login-box-line text-2xl text-white mr-12"></i>
       </div>

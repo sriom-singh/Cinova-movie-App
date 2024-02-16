@@ -6,7 +6,7 @@ import axios from "../../utils/axios"
 import HorizontalCards from "../partials/HorizontalCards";
 import Dropdown from "../partials/Dropdown";
 import Shimmer from "../shimmer/Shimmer";
-
+import { Outlet } from 'react-router-dom';
 
 const Home = () => {
     document.title="Cinova - Home";
@@ -46,6 +46,7 @@ const Home = () => {
   return (
     <div className="flex w-full overflow-hidden">
     <SideNav />
+    <Outlet />
     <div className="w-5/6 overflow-y-scroll right-screen">
       <TopNav />
 

@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Header = ({ data }) => {
   return (
-    <div className="w-full h-[400px]  text-white flex flex-col justify-end items-start ">
+    <div className="w-full h-[460px]  text-white flex flex-col justify-end items-start ">
       {/* <h1 className="py-4 text-5xl font-medium text-white font-wix">
         {data?.name || data.title || data?.original_name || data.original_title}
       </h1>

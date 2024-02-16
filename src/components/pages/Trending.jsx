@@ -14,27 +14,32 @@ const Trending = () => {
   document.title="Cinova - Trending- ("+ category+")";
   const [duration, setduration] = useState("day");
   const [trending, setTrending] = useState([]);
-
+  const [loading,setLoading] = useState(false);
   const GetTrending = async () => {
     try {
-      setTrending([])
+      setLoading(true)
       const { data } = await axios.get(
         `trending/${category}/${duration}?page=${page}`
       );
-      setTrending(data.results);
-      // setTrending((prevState)=>[...prevState,...data.results])
+      // setTrending(data.results);
+      setTrending((prevState)=>[...prevState,...data.results])
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
       await GetTrending();
-      window.scrollTo(0, 0);
     };
     fetchData();
   }, [duration, category, page]);
+
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   return (
     <div className="w-screen h-screen px-2 py-4 " >
@@ -64,27 +69,21 @@ const Trending = () => {
         />
       </div>
 
-      {trending.length > 0 ? <Card data={trending} /> : <ShimmerCard />}
-      <div className="w-full h-min flex p-4 justify-center gap-4">
-        <h1
-          onClick={() => setPage(1)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          1
-        </h1>
-        <h1
-          onClick={() => setPage(2)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          2
-        </h1>
-        <h1
-          onClick={() => setPage(3)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          3
-        </h1>
+      {trending.length > 0 ? (
+        <>
+      <Card data={trending} /> 
+      <div className="w-full h-min flex p-4 justify-center">
+            <button
+              onClick={handleLoadMore}
+              className="p-2 px-4 w-2/3 rounded-md border-[1px] border-primary text-white cursor-pointer"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Load More"}
+            </button>
       </div>
+        </>
+      ): <ShimmerCard />}
+      
     </div>
   );
 };

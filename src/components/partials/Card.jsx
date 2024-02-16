@@ -7,7 +7,7 @@ const Card = ({ data, title }) => {
     <div className="flex flex-wrap justify-center w-full min-h-full gap-5 p-4 mt-4">
       {data.map((d, i) => (
         <Link
-          to={`/${title||d.media_type}/${d.id}`}
+          to={`/${title || d.media_type}/${d.id}`}
           key={i}
           className="flex flex-col items-end justify-start w-56 mb-5 bg-center bg-cover rounded-md shadow-s shadow-zinc-800"
           // style={{
@@ -17,7 +17,7 @@ const Card = ({ data, title }) => {
           // }}
         >
           <img
-            className="object-contain w-full h-full "
+            className="object-cover w-full h-full "
             src={`https://image.tmdb.org/t/p/original${
               d.poster_path || d.profile_path
             }`}

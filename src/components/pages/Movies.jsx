@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useNavigate } from "react-router-dom";
 import TopNav from "../partials/TopNav";
 import Dropdown from "../partials/Dropdown";
@@ -7,40 +8,38 @@ import Card from "../partials/Card";
 import ShimmerCard from "../shimmer/ShimmerCard";
 
 const Movies = () => {
-    
-    const [page, setPage] = useState(1);
-    const navigate = useNavigate();
-    const [category, setcategory] = useState("now_playing");
-    // This will change title dynamically.
-    document.title="Cinova - Movies- ("+ category+")";
+  const [category, setCategory] = useState("now_playing");
   const [movie, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const GetMovies = async () => {
+  const navigate = useNavigate();
+
+  // This will change title dynamically.
+  document.title = "Cinova - Movies- (" + category + ")";
+
+  const getMovies = async () => {
     try {
-      setMovies([])
-      const { data } = await axios.get(
-        `movie/${category}?page=${page}`
-      );
-      console.log(data)
-      setMovies(data.results);
-      // setMovies((prevState)=>[...prevState,...data.results])
+      setLoading(true);
+      const { data } = await axios.get(`movie/${category}?page=${page}`);
+      setMovies((prevMovies) => [...prevMovies, ...data.results]);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      await GetMovies();
-      window.scrollTo(0, 0);
-    };
-
-    fetchData();
+    getMovies();
   }, [category, page]);
 
-  return (
-    <div className="w-screen h-screen px-2 py-4 " >
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
+  return (
+    <div className="w-screen h-screen px-2 py-4">
       <div className="w-full h-16 z-50 fixed top-0 bg-secondary  flex gap-2 items-center">
         <Link
           onClick={() => navigate(-1)}
@@ -56,34 +55,27 @@ const Movies = () => {
       <div className="w-full   max-h-fit gap-6 px-9 py mt-12 flex justify-end">
         <Dropdown
           title="Category"
-          options={["now_playing", "popular","top_rated","upcoming"]}
-          func={(e) => setcategory(e.target.value)}
+          options={["now_playing", "popular", "top_rated", "upcoming"]}
+          func={(e) => setCategory(e.target.value)}
         />
-  
       </div>
 
-      {movie.length > 0 ? <Card data={movie} title='movie'  /> : <ShimmerCard />}
-
-      <div className="w-full h-min flex p-4 justify-center gap-4">
-        <h1
-          onClick={() => setPage(1)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          1
-        </h1>
-        <h1
-          onClick={() => setPage(2)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          2
-        </h1>
-        <h1
-          onClick={() => setPage(3)}
-          className="p-1 px-2 rounded-md bg-white cursor-pointer text-black "
-        >
-          3
-        </h1>
-      </div>
+      {movie.length > 0 ? (
+        <>
+          <Card data={movie} title="movie" />
+          <div className="w-full h-min flex p-4 justify-center">
+            <button
+              onClick={handleLoadMore}
+              className="p-2 px-4 w-2/3 rounded-md border-[1px] border-primary text-white cursor-pointer"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Load More"}
+            </button>
+          </div>
+        </>
+      ) : (
+        <ShimmerCard />
+      )}
     </div>
   );
 };

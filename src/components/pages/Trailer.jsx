@@ -7,6 +7,8 @@ const Trailer=()=> {
  const {pathname} =  useLocation()
 const navigate = useNavigate();
  const category = pathname.includes("movie")?'movie':'tv'
+ document.title = "Cinova - Trailer- (" + category + ")";
+
  const ytVideo =  useSelector(state=>state[category].info.videos);
 
   return (

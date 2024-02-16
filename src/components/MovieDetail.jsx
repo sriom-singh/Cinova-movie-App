@@ -10,6 +10,7 @@ import { FaImdb } from "react-icons/fa6";
 import Marquee from "react-fast-marquee";
 import { IoPlayOutline } from "react-icons/io5";
 import HorizontalCards from "./partials/HorizontalCards";
+import noImage from '../assets/no-image.jpg'
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const MovieDetail = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   return info ? (
     <div
@@ -82,9 +83,9 @@ const MovieDetail = () => {
             <img
               title={info.detail.tilte}
               className="object-contain h-[400px] rounded-lg border-y-2 shadow-xl"
-              src={`https://image.tmdb.org/t/p/original${
-                info.detail.poster_path || info.detail.backdrop_path
-              }`}
+              src={info.detail.poster_path || info.detail.backdrop_path ?  `https://image.tmdb.org/t/p/original${
+                info.detail.poster_path || info.detail.backdrop_path 
+              }`: noImage}
             />
             <div className="p-2 flex flex-col gap-4 pt-4">
               <h1 className="font-wix uppercase tracking-wide font-bold text-4xl  text-white">
@@ -112,7 +113,7 @@ const MovieDetail = () => {
                 </h1>
               </div>
 
-              <p className="text-xs w-2/4 py-2 line-clamp-3 text-zinc-300">
+              <p className="text-xs w-2/4  line-clamp-3 text-zinc-300">
                 {info.detail.overview || "This the best film ever made."}
               </p>
               <Link
