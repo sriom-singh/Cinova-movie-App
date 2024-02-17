@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import { IoLanguageOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import image from "../../assets/no-image.jpg";
 
 const Card = ({ data, title }) => {
   return (
-    <div className="flex flex-wrap justify-center w-full min-h-full gap-5 p-4 mt-4">
+    <div className="flex flex-wrap justify-center max-[600px]:gap-4 max-[600px]:mt-2  w-full min-h-full gap-5 p-4 mt-4">
       {data.map((d, i) => (
         <Link
           to={`/${title || d.media_type}/${d.id}`}
           key={i}
-          className="flex flex-col items-end justify-start w-56 mb-5 bg-center bg-cover rounded-md shadow-s shadow-zinc-800"
+          className="flex flex-col items-end justify-start w-56 max-[600px]:w-40 max-[600px]:mb-0 mb-5 bg-center bg-cover rounded-md shadow-s shadow-zinc-800"
           // style={{
           //   background: `url(https://image.tmdb.org/t/p/original${d.poster_path})`,
           //   ...backgroundStyle,
@@ -18,9 +19,13 @@ const Card = ({ data, title }) => {
         >
           <img
             className="object-cover w-full h-full "
-            src={`https://image.tmdb.org/t/p/original${
+            src={
               d.poster_path || d.profile_path
-            }`}
+                ? `https://image.tmdb.org/t/p/original${
+                    d.poster_path || d.profile_path
+                  }`
+                : image
+            }
           ></img>
           <div className="z-10 m-auto flex w-full cursor-pointer flex-col justify-end rounded-md bg-[rgb(0,0,0,0.9)]  p-3 font-poppins text-lg font-medium text-white opacity-60 duration-500 hover:opacity-100">
             <h1 className="truncate ">

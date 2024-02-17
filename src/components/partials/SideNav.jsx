@@ -14,7 +14,7 @@ const SideNav = () => {
   return (
     <>
       <div
-        className="absolute lg:hidden xl:hidden 2xl:hidden w-20 h-36  flex justify-start items-center text-[28px] text-teal-50 left-4 z-[1000]"
+        className="absolute lg:hidden xl:hidden 2xl:hidden -mt-6  w-20 h-28 top-0  flex justify-start items-center text-[28px] text-teal-50 left-4 z-[10000]"
         onClick={handleVisiblity}
       >
         <i className="ri-menu-2-line"></i>

@@ -20,7 +20,7 @@ const Search = () => {
     getSearches();
   }, [query]);
   return (
-    <div className="w-full h-screen flex flex-col bg-black/85 z-50 absolute justify-center ">
+    <div className="w-full h-screen flex flex-col bg-black/85 z-50  justify-center ">
       <div className="  w-full  m-auto h-[90%] flex flex-col justify-center  items-start  ">
         <div className="flex w-full  justify-center ">
           <Link
@@ -57,7 +57,7 @@ const Search = () => {
             <Link
               to={`/${m.media_type}/${m.id}`}
               key={i}
-              className="px-6 py-3 rounded-md  w-1/2 h-18 border-b-2 flex border-zinc-500  bg-slate-700 text-zinc-200 items-center "
+              className="px-6 py-3 rounded-md lg:w-1/2 xl:w-1/2 2xl:w-1/2   w-full h-18 border-b-2 flex border-zinc-500  bg-slate-700 text-zinc-200 items-center "
             >
               <img
                 className="w-16 h-16  mr-5 shadow-sm object-cover rounded-md "

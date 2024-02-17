@@ -41,11 +41,11 @@ const TVshows = () => {
   };
 
   return (
-    <div className="w-screen h-screen px-2 py-4 ">
+    <div className="w-screen h-screen px-2  py-4 ">
       <div className="w-full h-16 z-50 fixed top-0 bg-secondary  flex gap-2 items-center">
         <Link
           onClick={() => navigate(-1)}
-          className="text-zinc-200 hover:text-primary"
+          className="text-zinc-200 z-[100000] hover:text-primary"
         >
           <i className="ri-arrow-left-s-line  text-4xl font-thin "></i>
         </Link>

@@ -54,7 +54,7 @@ const Home = () => {
     <>
       <Header data={wallpaper} />
 
-    <div className="flex gap-16 px-6 pr-8 mt-6 -mb-3 text-3xl font-medium font-poppins text-zinc-300 ">
+    <div className="flex gap-16 px-6 pr-8 mt-6 max-[600px]:mt-10 -mb-3 text-3xl font-medium font-poppins text-zinc-300 ">
       <h1>Trending</h1> 
     <Dropdown title="Filter" options={["tv","movie","all"]} func={(e)=>setCatgory(e.target.value)} />
     </div>

@@ -13,7 +13,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Header = ({ data }) => {
   return (
-    <div className="w-full h-[460px]  text-white flex flex-col justify-end items-start ">
+    <div className="w-full h-[460px]   text-white flex flex-col justify-end items-start ">
       {/* <h1 className="py-4 text-5xl font-medium text-white font-wix">
         {data?.name || data.title || data?.original_name || data.original_title}
       </h1>
@@ -45,7 +45,7 @@ const Header = ({ data }) => {
             className="flex flex-col justify-end p-16"
             style={{
               background: `linear-gradient(rgba(0,0,0,0.2),rgb(31, 30, 36,0.7),rgb(31, 30, 36)) ,url(https://image.tmdb.org/t/p/original${d.backdrop_path})`,
-              backgroundSize: "100%",
+              backgroundSize: "cover",
               backgroundPosition: "top",
               backgroundRepeat: "no-repeat",
             }}
@@ -53,7 +53,7 @@ const Header = ({ data }) => {
             <h1 className="headingText py-4  font-medium text-white font-wix">
               {d?.name || d.title || d?.original_name || d.original_title}
             </h1>
-            <p className="w-2/3 text-base line-clamp-3 text-zinc-400">
+            <p className="w-2/3  max-[600px]:w-full text-base line-clamp-3 text-zinc-400">
               {d.overview || "This the best film ever made."}
             </p>
             <p className="flex items-center pt-3 text-sm">

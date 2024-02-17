@@ -34,7 +34,7 @@ const MovieDetail = () => {
     <div
       style={{
         background: `linear-gradient(to right ,rgb(0, 0, 0),rgb(1, 0, 6,0.7),rgb(31, 30, 36,0.2)) ,url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
-        backgroundSize: "100%",
+        backgroundSize: "cover",
         backgroundPosition: "top",
         backgroundRepeat: "no-repeat",
         filter: blur("28px"),
@@ -78,17 +78,17 @@ const MovieDetail = () => {
           </div>
         </nav>
 
-        <div className="w-full h-full my-auto flex flex-col  ">
-          <div className="flex px-20 py-8 gap-8">
+        <div className="w-full h-full my-auto flex flex-col   ">
+          <div className="flex max-[600px]:flex-col max-[600px]:px-4 max-[600px]:justify-center px-20 py-8 gap-8">
             <img
               title={info.detail.tilte}
-              className="object-contain h-[400px] rounded-lg border-y-2 shadow-xl"
+              className="object-contain h-[400px] max-[600px]:m-auto max-[600px]:object-cover max-[600px]:w-[300px] rounded-lg border-y-2 shadow-xl"
               src={info.detail.poster_path || info.detail.backdrop_path ?  `https://image.tmdb.org/t/p/original${
                 info.detail.poster_path || info.detail.backdrop_path 
               }`: noImage}
             />
-            <div className="p-2 flex flex-col gap-4 pt-4">
-              <h1 className="font-wix uppercase tracking-wide font-bold text-4xl  text-white">
+            <div className="p-2 flex flex-col  gap-4 pt-4">
+              <h1 className="font-wix uppercase tracking-wide font-bold text-4xl max-[600px]:text-xl  text-white">
                 {info.detail.title}
               </h1>
 
@@ -113,44 +113,47 @@ const MovieDetail = () => {
                 </h1>
               </div>
 
-              <p className="text-xs w-2/4  line-clamp-3 text-zinc-300">
-                {info.detail.overview || "This the best film ever made."}
+              <p className="text-xs w-2/4  max-[600px]:w-full line-clamp-3 text-zinc-300">
+                {info.detail.overview || "NA"}
               </p>
               <Link
                 to={`${pathname}/trailer`}
-                className="border-[1px] flex items-center justify-center hover:text-purple-500 gap-1 text-sm w-28 py-2 text-white border-primary text-center  rounded-md "
+                className="border-[1px]  flex items-center justify-center hover:text-purple-500 gap-1 text-sm w-28 py-2 text-white border-primary text-center  rounded-md "
               >
                 <IoPlayOutline size={20} /> Play Trailer
               </Link>
             </div>
           </div>
         </div>
-      </div>
-
-        
-      <h1 className="text-gray-400 font-wix text-lg text-center -mb-4">
+      <h1 className="text-gray-400  font-wix text-lg text-center -mb-4">
         Languages Available:
       </h1>
-      <Marquee className="flex gap-2 text-white p-4 px-6" autoFill={true}>
+      <Marquee className="flex gap-2  text-white p-4 px-6" autoFill={true}>
         {info.translations.map((m, i) => (
-          <p className="text-red font-wix p-4" key={i}>
+          <p className="font-wix p-4" key={i}>
             {m}
           </p>
         ))}
       </Marquee>
+      </div>
+
+        
         <Outlet/>
 
       {/* Recommendations */}
-      {info.recommendation.length && <div className="px-8 ">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+      {info.recommendation.length && <div className="px-8 max-[600px]:px-1 ">
+        <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
           Recommended
+          <p className="ml-auto text-sm text-zinc-500">more →</p>
         </h1>
         {info.similar && <HorizontalCards data={info.recommendation} />}
       </div>}
 
-    {info.similar.results.length && <div className="px-8 mt-10">
-        <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+    {info.similar.results.length && <div className="px-8 mt-10 max-[600px]:px-1">
+        <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
           Similar
+          <p className="ml-auto text-sm text-zinc-500">more →</p>
+
         </h1>
         {info.similar && <HorizontalCards data={info.similar.results} />}
       </div>}

@@ -12,16 +12,16 @@ import image from "../../assets/no-image.jpg";
 const HorizontalCards = ({ data }) => {
   console.log(data);
   return (
-    <div className="w-full h-[440px] overflow-x-hidden overflow-hidden p-4">
+    <div className="w-full h-[480px] max-[600px]:h-[300px]  overflow-x-hidden overflow-hidden p-4">
       <hr className="my-2 opacity-15"></hr>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={2}
         spaceBetween={6}
         navigation={true}
         scrollbar={true}
         breakpoints={{
           "@0.00": {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 6,
           },
           "@0.60": {
@@ -46,7 +46,7 @@ const HorizontalCards = ({ data }) => {
           },
         }}
         modules={[Pagination, Navigation]}
-        className="h-[90%] p-3  "
+        className="h-full p-3  "
       >
         {data.map((d, i) => (
           <SwiperSlide

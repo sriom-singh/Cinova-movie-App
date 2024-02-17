@@ -33,7 +33,7 @@ const TVDetail = () => {
     <div
       style={{
         background: `linear-gradient(to right ,rgb(0, 0, 0),rgb(1, 0, 6,0.7),rgb(31, 30, 36,0.2)) ,url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
-        backgroundSize: "100%",
+        backgroundSize: "cover",
         backgroundPosition: "top",
         backgroundRepeat: "no-repeat",
         filter: blur("28px"),
@@ -41,10 +41,10 @@ const TVDetail = () => {
       className="w-screen  px-4 "
     >
       <div className="w-full backdrop-blur-[2px] ">
-        <nav className="pt-4 flex justify-between">
+        <nav className="pt-4  flex justify-between">
           <Link
             onClick={() => navigate(-1)}
-            className="text-zinc-200 text-2xl gap-2 flex items-center hover:text-primary"
+            className="text-zinc-200  text-2xl gap-2  flex items-center hover:text-primary"
           >
             <i className="ri-arrow-left-s-line  text-4xl  font-thin"> </i>
           </Link>
@@ -78,16 +78,16 @@ const TVDetail = () => {
         </nav>
 
         <div className="w-full h-full my-auto flex flex-col  ">
-          <div className="flex px-20 py-8 gap-8">
+          <div className="flex max-[600px]:flex-col max-[600px]:px-4  px-20 py-8 gap-8">
             <img
               title={info.detail.tilte}
-              className="object-contain h-[400px] rounded-lg border-y-2 shadow-xl"
+              className="object-contain h-[400px] max-[600px]:m-auto max-[600px]:object-cover max-[600px]:w-[300px] rounded-lg border-y-2 shadow-xl"
               src={`https://image.tmdb.org/t/p/original${
                 info.detail.poster_path || info.detail.backdrop_path
               }`}
             />
             <div className="p-2 flex flex-col gap-4 pt-4">
-              <h1 className="font-wix uppercase tracking-wide font-bold text-4xl  text-white">
+              <h1 className="font-wix uppercase max-[600px]:text-xl max-[600px]:w-full   tracking-wide font-bold text-4xl  text-white">
                 {info.detail.title || info.detail.name}
               </h1>
 
@@ -116,7 +116,7 @@ const TVDetail = () => {
                 </h1>
               </div>
 
-              <p className="text-xs w-2/4 my-2 line-clamp-3 overflow-hidden   text-zinc-300">
+              <p className="text-xs w-2/4 max-[600px]:w-full  my-2 line-clamp-3 overflow-hidden   text-zinc-300">
                 {info.detail.overview || "This the best film ever made."}
               </p>
               <Link
@@ -135,7 +135,7 @@ const TVDetail = () => {
       </h1>
       <Marquee className="flex gap-2 text-white p-4 px-6" autoFill={true}>
         {info.translations.map((m, i) => (
-          <p className="text-red font-wix p-4" key={i}>
+          <p className="font-wix p-4" key={i}>
             {m}
           </p>
         ))}
@@ -144,26 +144,31 @@ const TVDetail = () => {
 
       {/* Seasons */}
       {info.detail.seasons.length && (
-        <div className="px-8 mt-10">
-          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+        <div className="px-8 mt-10 max-[600px]:px-1">
+          <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
             Seasons
+            {info.recommendation.length > 2 && (
+              <p className="ml-auto text-sm text-zinc-500">more →</p>
+            )}
           </h1>
           <HorizontalCards data={info.detail.seasons} />
         </div>
       )}
 
       {info.recommendation.length && (
-        <div className="px-8 ">
-          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+        <div className="px-8 max-[600px]:px-1 max-[600px]:mt-4">
+          <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
             Recommended
+            <p className="ml-auto text-sm text-zinc-500">more →</p>
           </h1>
           <HorizontalCards data={info.recommendation} />
         </div>
       )}
       {info.similar.results.length && (
-        <div className="px-8 ">
-          <h1 className="text-gray-100 font-wix px-4 text-2xl text-left -mb-4">
+        <div className="px-8 max-[600px]:px-1 max-[600px]:mt-4">
+          <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
             Similar
+            <p className="ml-auto text-sm text-zinc-500">more →</p>
           </h1>
           <HorizontalCards data={info.similar.results} />
         </div>

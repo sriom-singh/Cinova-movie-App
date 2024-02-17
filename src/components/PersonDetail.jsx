@@ -1,19 +1,18 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadperson, removeperson } from "../store/actions/personActions";
 import { LuExternalLink } from "react-icons/lu";
 import DetailPage from "./shimmer/DetailPage";
 import { FaWikipediaW } from "react-icons/fa";
 import { FaImdb } from "react-icons/fa6";
-import Marquee from "react-fast-marquee";
-import { IoPlayOutline } from "react-icons/io5";
 import HorizontalCards from "./partials/HorizontalCards";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { IoLogoTiktok } from "react-icons/io5";
 import { BsTwitterX } from "react-icons/bs";
+import iamge from "../assets/no-image.jpg";
 
 const PersonDetail = () => {
   const { id } = useParams();
@@ -35,8 +34,11 @@ const PersonDetail = () => {
   return info ? (
     <div
       style={{
-        background: `linear-gradient(to right ,rgb(0, 0, 0),rgb(1, 0, 6,0.7),rgb(31, 30, 36,0.2)) ,url(https://image.tmdb.org/t/p/original/${info.combinedCredits.cast[0].backdrop_path})`,
-        backgroundSize: "100%",
+        background: `linear-gradient(to right ,rgb(0, 0, 0),rgb(1, 0, 6,0.7),rgb(31, 30, 36,0.2)) ,url(https://image.tmdb.org/t/p/original/${
+          info.combinedCredits?.cast[0]?.backdrop_path ||
+          info.combinedCredits.crew[0].poster_path
+        })`,
+        backgroundSize: "cover",
         backgroundPosition: "top",
         backgroundRepeat: "no-repeat",
         filter: blur("28px"),
@@ -81,18 +83,24 @@ const PersonDetail = () => {
         </nav>
 
         <div className="w-full h-full my-auto flex flex-col  ">
-          <div className="flex px-20 py-8 gap-8">
+          <div className="flex px-20 max-[600px]:flex-col max-[600px]:px-4 max-[600px]:justify-center py-8 gap-8">
             <img
               title={info.detail.name}
-              className="object-contain h-[400px] rounded-lg border-y-2 shadow-xl"
-              src={`https://image.tmdb.org/t/p/original${
+              className="object-contain h-[400px] max-[600px]:m-auto max-[600px]:object-cover max-[600px]:w-[300px] rounded-lg border-y-2 shadow-xl"
+              src={
                 info.detail.poster_path ||
                 info.detail.backdrop_path ||
                 info.detail.profile_path
-              }`}
+                  ? `https://image.tmdb.org/t/p/original${
+                      info.detail.poster_path ||
+                      info.detail.backdrop_path ||
+                      info.detail.profile_path
+                    }`
+                  : iamge
+              }
             />
-            <div className="p-2 flex font-poppins flex-col gap-4 pt-4">
-              <h1 className="font-wix uppercase tracking-wide font-bold text-4xl  text-white">
+            <div className="p-2 max-[600px]:p-0  flex font-poppins flex-col gap-4 pt-4">
+              <h1 className="font-wix max-[600px]:text-2xl uppercase tracking-wide font-bold text-4xl  text-white">
                 {info.detail.title || info.detail.name}
               </h1>
 
@@ -167,6 +175,16 @@ const PersonDetail = () => {
               </Link> */}
             </div>
           </div>
+
+              {/* Recommendations */}
+      {info.movieCredits.cast.length && <div className="px-8 max-[600px]:mt-4 max-[600px]:px-1 ">
+        <h1 className="text-gray-100 flex font-wix px-4 text-2xl text-left -mb-4">
+          Movies
+          <p className="ml-auto text-sm text-zinc-500">more →</p>
+        </h1>
+        {info.movieCredits.cast && <HorizontalCards data={info.movieCredits.cast} />}
+      </div>}
+
         </div>
       </div>
     </div>
