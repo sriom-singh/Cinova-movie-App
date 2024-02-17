@@ -11,15 +11,15 @@ import TVDetail from "./components/TVShowsDetail";
 import Trailer from "./components/pages/Trailer";
 import Error from "./components/Error";
 import Search from "./components/pages/Search";
+import Authentication from "./components/pages/Authentication";
 
 const App = () => {
   return (
     <div className="w-screen h-screen overflow-x-hidden bg-secondary flex ">
       <Routes>
-        <Route path="/" element={<Home />} >
-
-        </Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/search" element={<Search />} />
+        <Route path="/auth" element={<Authentication />} />
         <Route path="/trending" element={<Trending />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movies" element={<Movies />} />
@@ -32,8 +32,7 @@ const App = () => {
         <Route path="tv/:id" element={<TVDetail />}>
           <Route path="trailer" element={<Trailer />} />
         </Route>
-        <Route path="person/:id" element={<PersonDetail />}>
-        </Route>
+        <Route path="person/:id" element={<PersonDetail />}></Route>
 
         <Route path="*" element={<Error />}></Route>
       </Routes>
