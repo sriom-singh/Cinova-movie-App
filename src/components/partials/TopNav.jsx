@@ -36,7 +36,7 @@ const TopNav = () => {
   }
   return (
     <div className="w-full  h-16 absolute right-0 z-[1000] flex  first-letter: items-center justify-center">
-      <div className="flex-1 gap-2 flex justify-end pr-6  h-full  items-center">
+      <div className="flex-1 gap-2 flex justify-end pr-6 max-[600px]:pr-2 h-full  items-center">
         <Link to={"/search"}>
           <i
             className="ri-search-line text-2xl px-4 -ml-1 py-1.5 text-zinc-200"
