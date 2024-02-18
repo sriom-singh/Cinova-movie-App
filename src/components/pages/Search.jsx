@@ -34,7 +34,7 @@ const Search = () => {
           <input
             onChange={(e) => setQuery(e.target.value)}
             type="text"
-            className=" text-sm py-4 w-1/3 h-10 bg-zinc-700 border-none px-4 text-zinc-200 outline-none rounded-sm"
+            className=" text-sm py-4 w-1/3 h-10 bg-zinc-700 max-[600px]:w-1/2 max-[600px]:ml-2 border-none px-4 text-zinc-200 outline-none rounded-sm"
             placeholder="Search for movies, shows, person.."
             aria-label="Search Movies"
             value={query}

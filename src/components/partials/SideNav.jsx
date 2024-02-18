@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { RiMenu3Line } from "react-icons/ri";
 import { useState } from "react";
 
 const SideNav = () => {

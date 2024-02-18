@@ -8,6 +8,7 @@ import Dropdown from "../partials/Dropdown";
 import Shimmer from "../shimmer/Shimmer";
 import { Outlet } from 'react-router-dom';
 
+
 const Home = () => {
     document.title="Cinova - Home";
 
