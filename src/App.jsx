@@ -12,12 +12,14 @@ import Trailer from "./components/pages/Trailer";
 import Error from "./components/Error";
 import Search from "./components/pages/Search";
 import Authentication from "./components/pages/Authentication";
+import About from "./components/pages/About";
 
 const App = () => {
   return (
     <div className="w-screen h-screen overflow-x-hidden bg-secondary flex ">
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
         <Route path="/search" element={<Search />} />
         <Route path="/auth" element={<Authentication />} />
         <Route path="/trending" element={<Trending />} />

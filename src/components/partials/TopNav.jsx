@@ -21,7 +21,7 @@ const TopNav = () => {
   }, [auth]);
 
   console.log(data);
-  const [showData, setShowData] = useState(true);
+  const [showData, setShowData] = useState(false);
 
   function handleSignOut() {
     signOut(auth)
@@ -90,7 +90,7 @@ const TopNav = () => {
           </div>
         ) : (
           <Link to={"/auth"}>
-            <button className="text-white border-2 border-primary bg-purple-500/20 hover:bg-purple-500/70 duration-20000 mr-10 px-4 rounded-lg text-sm py-2">
+            <button className="text-white max-[600px]:mr-2 border-2 border-primary bg-purple-500/20 hover:bg-purple-500/70 duration-20000 mr-10 px-4 rounded-lg text-sm py-2">
               Sign In
             </button>
           </Link>

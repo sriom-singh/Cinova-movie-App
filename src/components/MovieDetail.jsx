@@ -39,7 +39,7 @@ const MovieDetail = () => {
         backgroundRepeat: "no-repeat",
         filter: blur("28px"),
       }}
-      className="w-screen  px-4 "
+      className="w-screen max-[600px]:px-1 px-4 "
     >
       <div className="w-full backdrop-blur-[2px] ">
         <nav className="pt-4 flex justify-between">

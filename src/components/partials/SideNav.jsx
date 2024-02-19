@@ -21,7 +21,7 @@ const SideNav = () => {
       </div>
 
       {isVisible && (
-        <div className=" side-nav w-1/6 h-full p-3 px-6 border-r-2  overflow-hidden  bg-secondary border-zinc-700">
+        <div className=" side-nav w-1/6 h-full max-[600px]:h-[100dvh] p-3 px-6 border-r-2  overflow-hidden  bg-secondary border-zinc-700">
           <h1 className="text-2xl flex text-white font-medium tracking-tighter border-b-[1px] border-zinc-500 py-4 ">
             {/* <i className="mr-2 text-primary ri-film-fill" /> */}
             <img className="w-8 mr-2" src={logo}></img>
@@ -34,7 +34,10 @@ const SideNav = () => {
             <Link className="flex items-center p-2 text-sm align-middle duration-200 rounded-sm text-zinc-300 hover:bg-primary">
               <i className="mr-1 ri-home-5-line"></i> Home
             </Link>
-            <Link className="flex items-center p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary text-middle">
+            <Link
+              to={"/about"}
+              className="flex items-center p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary text-middle"
+            >
               <i className="mr-1 ri-information-line"></i> About
             </Link>
             <Link className="flex items-center p-2 text-sm duration-200 rounded-sm text-zinc-300 hover:bg-primary">

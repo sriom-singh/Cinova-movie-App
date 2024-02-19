@@ -12,7 +12,7 @@ const navigate = useNavigate();
  const ytVideo =  useSelector(state=>state[category].info.videos);
 
   return (
-    <div className="flex bg-zinc-900/95 absolute w-screen h-screen items-center justify-center top-0 left-0 z-50">
+    <div className="flex bg-zinc-900/95 absolute w-screen h-screen max-[600px]:px-2 items-center justify-center top-0 left-0 z-50">
         
           <Link
             onClick={() => navigate(-1)}
@@ -21,7 +21,7 @@ const navigate = useNavigate();
             <i className="ri-add-fill rotate-45  text-4xl  font-thin bg-zinc-600  px-0.5 rounded-full" > </i>
           </Link>
          { ytVideo ?   <>
-        <ReactPlayer controls url={`https://www.youtube.com/watch?v=${ytVideo.key}`} height={'80%'} width={"70%"}  />
+        <ReactPlayer controls url={`https://www.youtube.com/watch?v=${ytVideo.key}`} className="h-[80%] w-[70%]   max-[600px]:w-[90%] max-[600px]:h-1/2 "  />
             </>:<Error/>}
         
     </div>
